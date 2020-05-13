@@ -1,0 +1,14 @@
+title: list
+type: object
+description: Paginated List
+properties:
+  size:
+    type: integer
+  number:
+    type: integer
+  totalItems:
+    type: number
+  totalPages:
+    type: integer
+  last:
+    type: boolean

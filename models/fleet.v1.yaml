@@ -1,0 +1,38 @@
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  note:
+    type: string
+  updateDate:
+    type: string
+    format: date-time
+  state:
+    type: string
+    enum:
+      - DRAFT
+      - ACTIVE
+  solutionContractId:
+    type: string
+  realmId:
+    type: string
+  originalId:
+    type: string
+  modelVersion:
+    type: string
+  lastUpdateReason:
+    type: string
+  dbVersion:
+    type: integer
+    format: int64
+  createDate:
+    type: string
+    format: date-time
+  acceptanceServiceIds:
+    type: array
+    items:
+      type: string
+type: object
+title: Fleet
+description: ''

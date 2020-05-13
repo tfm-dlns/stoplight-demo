@@ -1,0 +1,26 @@
+type: object
+properties:
+  createDate:
+    type: string
+    format: date-time
+  dbVersion:
+    type: integer
+    format: int64
+  fleetId:
+    type: string
+  id:
+    type: string
+  lastUpdateReason:
+    type: string
+  modelVersion:
+    type: string
+  name:
+    type: string
+  originalId:
+    type: string
+  realmId:
+    type: string
+  updateDate:
+    type: string
+    format: date-time
+title: StoreGroup

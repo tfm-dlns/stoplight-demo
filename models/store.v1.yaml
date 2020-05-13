@@ -1,0 +1,5 @@
+title: store
+type: object
+properties:
+  id:
+    type: string
