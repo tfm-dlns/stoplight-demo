@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Terminal Fleet Manager
   version: '1.0'
-  description: Mange your fleet of POIs
+  description: Manage your fleet of POIs
   contact:
     name: Dalenys
     url: 'https://dalenys.com'
