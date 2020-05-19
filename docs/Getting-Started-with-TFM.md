@@ -1,5 +1,3 @@
-# Getting Started with TFM - TEST
+# Getting Started with TFM
 
-The beginning of an **awesome** article... 
-
-Let's see if I can update stoplight from here !
+In first, create a fleet in which your stores will have to be create. Stores can be grouped into store groups. The terminals can then be created store by store.
