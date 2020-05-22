@@ -1,0 +1,1089 @@
+openapi: 3.0.0
+info:
+  title: Terminal Fleet Manager
+  version: '1.0'
+  description: Mange your fleet of POIs
+  contact:
+    name: Dalenys
+    url: 'https://dalenys.com'
+    email: contact@dalenys.com
+servers:
+  - url: 'https://staging-payment.dlns.io'
+paths:
+  /fleets:
+    get:
+      summary: Get fleets
+      operationId: listFleet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: ../models/fleet.v1.yaml
+                  - $ref: ../models/paginatedList.v1.yaml
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      description: Get fleets
+      parameters:
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: pageNumber
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: paged
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.sorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.unsorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: target
+          in: query
+          description: target
+          required: false
+          schema:
+            type: string
+        - name: unpaged
+          in: query
+          required: false
+          schema:
+            type: boolean
+      tags:
+        - fleet
+    post:
+      summary: Create a fleet
+      operationId: createFleet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/fleet.v1.yaml
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/fleet.v1.yaml
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/fleet.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      tags:
+        - fleet
+      description: Create a fleet resource
+    parameters: []
+  '/fleets/{id}':
+    get:
+      tags:
+        - fleet
+      summary: Get a fleet
+      operationId: getFleet
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/fleet.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get a fleet by Id
+    put:
+      tags:
+        - fleet
+      summary: Update a fleet
+      operationId: updateFleet
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/fleet.v1.yaml
+        description: updateRequestItem
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/fleet.v1.yaml
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Update a fleet
+    delete:
+      tags:
+        - fleet
+      summary: Delete a fleet
+      operationId: deleteFleet
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Delete a fleet
+  /solutionContracts:
+    get:
+      tags:
+        - solution-contract
+      summary: Get solution contracts
+      operationId: getSolutionContracts
+      parameters:
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: pageNumber
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: paged
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.sorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.unsorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: target
+          in: query
+          description: target
+          required: false
+          schema:
+            type: string
+        - name: unpaged
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/paginatedList.v1.yaml
+                  - type: array
+                    items:
+                      $ref: ../models/solutionContract.v1.yaml
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get solution contracts
+    post:
+      tags:
+        - solution-contract
+      summary: Create a solution contract
+      operationId: createSolutionContract
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/solutionContract.v1.yaml
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/solutionContract.v1.yaml
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/solutionContract.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Create a solution contract
+  '/solutionContracts/{id}':
+    get:
+      tags:
+        - solution-contract
+      summary: Get a solution contract
+      operationId: getSolutionContract
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/solutionContract.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get a solution contract by Id
+  /storeGroups:
+    get:
+      tags:
+        - store-group
+      summary: Get store groups
+      operationId: getItems
+      parameters:
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+          description: ''
+        - name: pageNumber
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: paged
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.sorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.unsorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: target
+          in: query
+          description: target
+          required: false
+          schema:
+            type: string
+        - name: unpaged
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: array
+                    items:
+                      $ref: ../models/storeGroup.v1.yaml
+                  - $ref: ../models/paginatedList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get list of store groups
+    post:
+      tags:
+        - store-group
+      summary: Create a store group
+      operationId: createStoreGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/storeGroup.v1.yaml
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/storeGroup.v1.yaml
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/storeGroup.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Create a store group
+  '/storeGroups/{id}':
+    get:
+      tags:
+        - store-group
+      summary: Get a store group
+      operationId: getStoreGroup
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/storeGroup.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get a store group
+    put:
+      tags:
+        - store-group
+      summary: Update a store group
+      operationId: updateStoreGroup
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/storeGroup.v1.yaml
+        description: updateRequestItem
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/storeGroup.v1.yaml
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Update a store group
+    delete:
+      tags:
+        - store-group
+      summary: Delete a store group
+      operationId: deleteStoreGroup
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Delete a store group
+  '/stores/{id}':
+    get:
+      tags:
+        - store
+      summary: Get a store
+      operationId: getStore
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/store.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get a store
+    put:
+      tags:
+        - store
+      summary: Update a store
+      operationId: updateStore
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/store.v1.yaml
+        description: updateRequestItem
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/store.v1.yaml
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Update a store
+    delete:
+      tags:
+        - store
+      summary: Delete a store
+      operationId: deleteStore
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Delete a store
+  /stores:
+    get:
+      tags:
+        - store
+      summary: Get stores
+      operationId: getStores
+      parameters:
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: pageNumber
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: pageSize
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: paged
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.sorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: sort.unsorted
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: target
+          in: query
+          description: target
+          required: false
+          schema:
+            type: string
+        - name: unpaged
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - type: array
+                    items:
+                      $ref: ../models/store.v1.yaml
+                  - $ref: ../models/paginatedList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Get a list off stores
+    post:
+      tags:
+        - store
+      summary: Create a store
+      operationId: createStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/store.v1.yaml
+        description: request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/store.v1.yaml
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ../models/store.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Failure
+      deprecated: false
+      description: Create a store
+  /poiRepresentations:
+    get:
+      summary: Get Pois
+      tags:
+        - poi
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiRepresentation.v1.yaml
+          headers: {}
+      operationId: getPois
+      description: Get the list of Pois
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: size
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: string
+          in: query
+          name: target
+        - schema:
+            type: string
+          in: header
+    post:
+      summary: ''
+      operationId: postpoiRepresentation
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+      description: Create Pois
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fleetId:
+                  type: string
+                storeGroupId:
+                  type: string
+                storeId:
+                  type: string
+                platformId:
+                  type: string
+                toDeploy:
+                  type: string
+                enabled:
+                  type: boolean
+                '':
+                  type: boolean
+      tags:
+        - poi
+    parameters: []
+  '/poiRepresentations/{id}':
+    get:
+      summary: Get a POI
+      tags:
+        - poi
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiRepresentation.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getPoi
+      description: Get info for a single POI
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: ''
+      operationId: putPoi
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiRepresentation.v1.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+      description: Update Poi
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fleetId:
+                  type: string
+                storeGroupId:
+                  type: string
+                storeId:
+                  type: string
+                platformId:
+                  type: string
+                toDeploy:
+                  type: boolean
+                enabled:
+                  type: boolean
+      tags:
+        - poi
+    delete:
+      summary: ''
+      operationId: deletePoi
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      description: Delete Poi
+      tags:
+        - poi
+  /poiProfiles:
+    get:
+      summary: Get Poi Profiles
+      tags:
+        - poiProfile
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: ../models/poiProfile.v1.yaml
+                  totalPage:
+                    type: integer
+                  last:
+                    type: boolean
+                  totalItems:
+                    type: integer
+                  size:
+                    type: integer
+                  number:
+                    type: integer
+      operationId: get-poiProfiles
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: size
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: string
+          in: query
+          name: target
+    post:
+      summary: ''
+      operationId: post-poiProfiles
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                fleetId:
+                  type: string
+                acceptanceServicesIds:
+                  type: array
+                  items:
+                    type: string
+                applicationIds:
+                  type: array
+                  items:
+                    type: string
+                tmsProfileId:
+                  type: string
+      tags:
+        - poiProfile
+  '/poiProfiles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get a Poi Profile
+      tags:
+        - poiProfile
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiProfile.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getPoiProfile
+      description: Get a single Poi Profile
+    put:
+      summary: ''
+      operationId: putPoiProfile
+      responses:
+        '200':
+          description: OK
+      description: Update a Poi Profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                fleetId:
+                  type: string
+                acceptanceServiceIds:
+                  type: array
+                  items:
+                    type: string
+                applicationIds:
+                  type: array
+                  items:
+                    type: string
+                tmsProfileId:
+                  type: string
+      tags:
+        - poiProfile
+    delete:
+      summary: ''
+      operationId: deletPoiProfileId
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      description: Delete a Poi Profile
+      tags:
+        - poiProfile
+components:
+  schemas: {}
+tags:
+  - name: fleet
+    description: Everything about your fleet of POIs
+  - name: solution-contract
+  - name: store-group
+  - name: store
