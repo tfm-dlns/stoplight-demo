@@ -1,10 +1,13 @@
 properties:
   id:
     type: string
+    description: 'UUID of this fleet.'
   name:
     type: string
+    description: 'Human-friendly name of the fleet. Unique in the parent Solution Contract's scope' 
   note:
     type: string
+    description: 'Free-form note that can be used by the TFM users to pass information from one to the other, for example about the destined use of the Fleet, or actions that must/must not be taken'
   updateDate:
     type: string
     format: date-time
@@ -13,8 +16,10 @@ properties:
     enum:
       - DRAFT
       - ACTIVE
+    description: 'DRAFT - configuration of POIs in this fleet cannot be deployed to the terminals, ACTIVE - no restrictions on propagating the configuration'
   solutionContractId:
     type: string
+    description: 'UUID of the parent Solution Contract. Solution Contract represents a single Retailer in the system'
   realmId:
     type: string
   originalId:
@@ -31,8 +36,9 @@ properties:
     format: date-time
   acceptanceServiceIds:
     type: array
+    description: 'List of Acceptance Services that can be used by POIs in the Fleet'
     items:
       type: string
 type: object
 title: Fleet
-description: ''
+description: 'Top level of Retailer organisation, that contains all POIs deployed in a single business initiative. Besides organizing POIs for management and reporting, it can be used to set the configuration used by all the POIs inside.'
