@@ -1,5 +1,59 @@
-title: store
+title: Store
+description: 'Store groups POIs in a single location. Can be used for both reporting and POI configuration management.'
 type: object
 properties:
   id:
     type: string
+    description: 'UUID of the object'
+  name: 
+    type: string
+    description: 'Human readable name, for UI and reports'
+  notes:
+    type: string
+    description: 'Free-form note that can be used to describe the Store purpose or pass remarks between users working on the same object.'
+  fleetId:
+    type: string
+    description: >
+      UUID of the Fleet to which the Store belongs.
+      Each Store must belong to exactly one Fleet.
+  storeGroupId:
+    type: string
+    description: >
+      UUID of the Store Group to which the Store belongs. 
+      Each Store must belong to exactly one Store group. 
+      Referenced Store Group must belong to the Fleet referenced by fleetId property.
+  acceptanceServiceContracts:
+    type: array
+    description: Parameter values for the Acceptance Services used by the POIs in this Store.
+    items: 
+      type: object
+      description: Grouping of parameter sets for a signle Acceptance Service.
+      properties:
+        acceptanceServiceId:
+          type: string
+          description: A reference to the Acceptance Service for which the parameters are being provided.
+        parameters:
+          type: array
+          description: >
+            Sets of parameter values for the Acceptance Service identified by acceptanceServiceId.
+            If there is more than one, then each of them must contain a selector property.
+          items: 
+            type: object
+            description: A single set of parameter values for the Acceptance Service. 
+            properties:
+              id:
+                type: string
+                description: UUID of the set.
+              selector:
+                type: string
+                description: Free-form label used to distinguish between Acceptance Service Contracts for the same Acceptance Service
+              details:
+                type: object
+                description: Property - value pair.
+                properties:
+                  id:
+                    type: string
+                    description: UUID of the Acceptance Service parameter. Can be obtained from Acceptance Services endpoint.
+                  value:
+                    type: string
+                    description: Value that should be used for that parameter.
