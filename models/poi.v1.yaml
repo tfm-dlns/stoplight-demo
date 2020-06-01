@@ -1,0 +1,55 @@
+title: POI
+type: object
+description: Representation of a single POI and the configuration elements that are unique to it.
+properties: 
+  id:
+    type: string
+    description: >
+      Fifteen digit unique identifier of the POI within the system.
+      Visible on the terminal and in the transactional and management messages of the terminal.
+  createDate:
+    type: string
+    format: date-time
+  updateDate:
+    type: string
+    format: date-time
+  dbVersion:
+    type: integer
+    format: int64
+  lastUpdateReason:
+    type: string
+  realmId:
+    type: string
+  terminalId:
+    type: string
+    description: >
+      Terminal Id that is passed to the card and the acquirer during transactions.
+      Assigned by the system.
+  fleetId:
+    type: string
+    description: Reference to a Store Group that is an ancestor of this POI. 
+  storeGroupId:
+    type: string
+    description: Reference to a Store Group that is an ancestor of this POI. That Store Grup must be in the fleet referenced by fleetId property.
+  storeId:
+    type: string
+    description: Reference to the parent Store of this POI. That Store must be in a Store Group referenced by storeGroupId property.
+  platformId: 
+    type: string
+    description: >
+      Reference to one of the terminal platforms available in the system. 
+      Platforms endpoint provides a list of all available values.
+  enabled:
+    type: boolean
+    description: >
+      If enabled, this POI configuration is available for the terminal to download.
+      Otherwise terminals asking for this POI's configuration will not receive updates of configuration.
+  configurationStatus:
+    type: string
+    description: >
+      Information if the most recent version of the configuration is available for terminals.
+      If available_to_poi then the current configuration is available for download by a terminal.
+      If locally_modified, then there are some changes made on the TFM that were not deployed yet.
+    enum: 
+      - locally_modified
+      - available_to_poi
