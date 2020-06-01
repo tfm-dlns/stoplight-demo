@@ -8,14 +8,17 @@ properties:
     format: int64
   id:
     type: string
-  initialPartyId:
-    type: string
+    description: 'UUID of the object'
   lastUpdateReason:
     type: string
   modelVersion:
     type: string
   name:
     type: string
+    description: 'Name of the Retailer, unique within the System, cannot be empty'
+  note:
+    type: string
+    description: 'Free-form note that can be used to communicate additional information about the purpose of the created object'
   originalId:
     type: string
   realmId:
@@ -24,3 +27,4 @@ properties:
     type: string
     format: date-time
 title: SolutionContract
+description: 'Solution Contract represents a relation with a single Retailer for reporting purposes. Terminal behavior can not be managed at this level.'
