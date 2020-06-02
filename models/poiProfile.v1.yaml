@@ -1,0 +1,70 @@
+title: POI Profile
+type: object
+description: >
+  POI Profile is a collection of configuration data that can be shared by many POIs. 
+  It determines: 
+  
+  * applications installed
+  
+  * basic configuration template, that contains technical parameters for those applications
+  
+  * services and their parameters that can be provided by the user by those applications
+  
+properties:
+  id:
+    type: string
+    description: UUID of the POI Profile.
+  createDate:
+    type: string
+  updateDate:
+    type: string
+  dbVersion:
+    type: integer
+    format: int64
+  lastUpdateReason:
+    type: string
+  realmId:
+    type: string
+  name: 
+    type: string
+    description: Human-readable name, for use in reporting and UIs.
+  fleetId:
+    type: string
+    description: >
+      A reference to the parent Fleet.  
+      POI Profile can only be used to configure POIs belongin to its parent Fleet.
+  acceptanceServiceIds:
+    type: array
+    description: >
+      List of Acceptance Services available for the POIs using this POI Profile.
+      Must be a subset of Acceptance Services made available at the parent Fleet level.
+    items:
+      type: string
+      description: >
+        Reference to an Acceptance Service defined in the System.
+        Allowed values can be obtained from the acceptanceServices endpoint.
+  applicationIds:
+    type: array
+    description: List of Applications that are to be installed on POIs using this POI Profile.
+    items:
+      type: string
+      description: >
+        Refernce to one of the Applications defined in the System. 
+        Available values can be obtained from applications endpoint.
+  selectors:
+    type: array
+    description: List of selectors used to dertermine correct Acceptance Service Contracts for the POI. 
+    items:
+      type: string
+      description: >
+        Free-form label that allows the system to determine which of the Acceptance Service Contracts to choose,
+        in case when the parent Store of the POI has more than one for the same Acceptance Service.
+  tmsProfileId:
+    type: string
+    description: > 
+      A reference to a template configuration, containing the slow-changing properties of a POI. 
+      Allowed values can be retrieved from an endpoint or are provided oustide of the system. 
+  notes:
+    type: string
+    description: >
+      Free-form note that can be used to communicate the purpose of the POI Profile, how should it be used, etc.
