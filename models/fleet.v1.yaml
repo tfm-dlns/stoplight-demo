@@ -4,7 +4,7 @@ properties:
     description: 'UUID of this fleet.'
   name:
     type: string
-    description: 'Human-friendly name of the fleet. Unique in the parent Solution Contract\'s scope' 
+    description: 'Human-friendly name of the fleet. Unique in the parent Solution Contract''s scope' 
   note:
     type: string
     description: 'Free-form note that can be used by the TFM users to pass information from one to the other, for example about the destined use of the Fleet, or actions that must/must not be taken'
