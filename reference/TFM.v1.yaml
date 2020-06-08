@@ -28,8 +28,6 @@ paths:
                         items:
                           $ref: ../models/fleet.v1.yaml
                   - $ref: ../models/paginatedList.v1.yaml
-        '201':
-          description: Created
         '401':
           description: Unauthorized
         '403':
@@ -38,7 +36,7 @@ paths:
           description: Not Found
         '500':
           description: Failure
-      description: Get fleets
+      description: Get fleets defined in the system.
       parameters:
         - name: offset
           in: query
@@ -94,21 +92,18 @@ paths:
           application/json:
             schema:
               $ref: ../models/fleet.v1.yaml
-        description: request
+        description: > 
+          Create a new Fleet. 
+          Provided solutionContractId must reference an existing object.
+          Name of the Fleet must be unique within the parent Solution Contract. 
         required: true
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/fleet.v1.yaml
         '201':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: ../models/fleet.v1.yaml
+          description: Success, Fleet created.
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created Fleet.
         '401':
           description: Unauthorized
         '403':
@@ -131,7 +126,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: id
+          description: UUID of the requested Fleet.
           required: true
           schema:
             type: string
@@ -308,18 +303,12 @@ paths:
         description: request
         required: true
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/solutionContract.v1.yaml
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: ../models/solutionContract.v1.yaml
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created Solution Contract.
         '401':
           description: Unauthorized
         '403':
@@ -446,18 +435,12 @@ paths:
         description: request
         required: true
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/storeGroup.v1.yaml
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: ../models/storeGroup.v1.yaml
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created Store Group.
         '401':
           description: Unauthorized
         '403':
@@ -759,18 +742,12 @@ paths:
         description: request
         required: true
       responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ../models/store.v1.yaml
         '201':
           description: Success
-          content:
-            application/json:
-              schema:
-                $ref: ../models/store.v1.yaml
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created Store.
         '401':
           description: Unauthorized
         '403':
@@ -818,6 +795,10 @@ paths:
       responses:
         '201':
           description: Created
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created POI.
         '400':
           description: Bad Request
         '401':
@@ -831,22 +812,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                fleetId:
-                  type: string
-                storeGroupId:
-                  type: string
-                storeId:
-                  type: string
-                platformId:
-                  type: string
-                toDeploy:
-                  type: string
-                enabled:
-                  type: boolean
-                '':
-                  type: boolean
+              $ref: ../models/poiRepresentation.v1.yaml
       tags:
         - poi
     parameters: []
@@ -974,11 +940,15 @@ paths:
           in: query
           name: target
     post:
-      summary: ''
+      summary: 'Create a new POI Profile.'
       operationId: post-poiProfiles
       responses:
         '201':
           description: Created
+          headers:
+            Location: 
+              schema: string
+              description: URL of the created POI Profile.
         '400':
           description: Bad Request
         '401':
@@ -991,22 +961,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                fleetId:
-                  type: string
-                acceptanceServicesIds:
-                  type: array
-                  items:
-                    type: string
-                applicationIds:
-                  type: array
-                  items:
-                    type: string
-                tmsProfileId:
-                  type: string
+              $ref: ../models/poiProfile.v1.yaml
       tags:
         - poiProfile
   '/poiProfiles/{id}':
@@ -1046,22 +1001,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                fleetId:
-                  type: string
-                acceptanceServiceIds:
-                  type: array
-                  items:
-                    type: string
-                applicationIds:
-                  type: array
-                  items:
-                    type: string
-                tmsProfileId:
-                  type: string
+              $ref: ../models/poiProfile.v1.yaml
       tags:
         - poiProfile
     delete:
