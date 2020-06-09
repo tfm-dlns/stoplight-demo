@@ -4,15 +4,18 @@ description: Representation of a single POI and the configuration elements that 
 properties: 
   id:
     type: string
+    readOnly: true
     description: >
       Fifteen digit unique identifier of the POI within the system.
       Visible on the terminal and in the transactional and management messages of the terminal.
   createDate:
     type: string
     format: date-time
+    readOnly: true
   updateDate:
     type: string
     format: date-time
+    readOnly: true
   dbVersion:
     type: integer
     format: int64
@@ -22,6 +25,7 @@ properties:
     type: string
   terminalId:
     type: string
+    readOnly: true
     description: >
       Terminal Id that is passed to the card and the acquirer during transactions.
       Assigned by the system.
@@ -46,6 +50,7 @@ properties:
       Otherwise terminals asking for this POI's configuration will not receive updates of configuration.
   configurationStatus:
     type: string
+    readOnly: true
     description: >
       Information if the most recent version of the configuration is available for terminals.
       If available_to_poi then the current configuration is available for download by a terminal.
