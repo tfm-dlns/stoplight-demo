@@ -18,13 +18,11 @@ properties:
       Fifteen digit unique identifier of the POI within the system.
       Visible on the terminal and in the transactional and management messages of the terminal.
   createDate:
-    type: string
-    format: integer
+    type: integer
     readOnly: true
     description: Date and time of this POI creation (in TFM) in milliseconds since epoch. 
   updateDate:
-    type: string
-    format: integer
+    type: integer
     readOnly: true
     description: Date and time of this POI last modification (in TFM) in milliseconds since epoch. 
   dbVersion:
