@@ -1,6 +1,15 @@
 title: POI
 type: object
 description: Representation of a single POI and the configuration elements that are unique to it.
+required:
+  - id
+  - terminalId
+  - fleetId
+  - storeGroupId
+  - storeId
+  - platformId
+  - enabled
+  - configurationState
 properties: 
   id:
     type: string
@@ -10,12 +19,14 @@ properties:
       Visible on the terminal and in the transactional and management messages of the terminal.
   createDate:
     type: string
-    format: date-time
+    format: integer
     readOnly: true
+    description: Date and time of this POI creation (in TFM) in milliseconds since epoch. 
   updateDate:
     type: string
-    format: date-time
+    format: integer
     readOnly: true
+    description: Date and time of this POI last modification (in TFM) in milliseconds since epoch. 
   dbVersion:
     type: integer
     format: int64
