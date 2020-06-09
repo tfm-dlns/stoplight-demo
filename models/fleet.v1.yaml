@@ -1,6 +1,13 @@
+required:
+  - id
+  - name
+  - state
+  - solutionContractId
+  - acceptanceServiceIds
 properties:
   id:
     type: string
+    readOnly: true
     description: 'UUID of this fleet.'
   name:
     type: string
@@ -9,8 +16,9 @@ properties:
     type: string
     description: 'Free-form note that can be used by the TFM users to pass information from one to the other, for example about the destined use of the Fleet, or actions that must/must not be taken'
   updateDate:
-    type: string
-    format: date-time
+    type: integer
+    readOnly: true
+    description: Date and time of this Fleet last modification (in TFM) in milliseconds since epoch. 
   state:
     type: string
     enum:
@@ -32,8 +40,9 @@ properties:
     type: integer
     format: int64
   createDate:
-    type: string
-    format: date-time
+    type: integer
+    readOnly: true
+    Date and time of this Fleet creation (in TFM) in milliseconds since epoch. 
   acceptanceServiceIds:
     type: array
     description: 'List of Acceptance Services that can be used by POIs in the Fleet'
