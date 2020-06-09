@@ -1,13 +1,18 @@
 type: object
+required:
+  - id
+  - name
 properties:
   createDate:
-    type: string
-    format: date-time
+    type: integer
+    readOnly: true
+    description: Date and time of this Solution Contract last modification (in TFM) in milliseconds since epoch.
   dbVersion:
     type: integer
     format: int64
   id:
     type: string
+    readOnly: true
     description: 'UUID of the object'
   lastUpdateReason:
     type: string
@@ -24,7 +29,8 @@ properties:
   realmId:
     type: string
   updateDate:
-    type: string
-    format: date-time
+    type: integer
+    readOnly: true
+    description: Date and time of this Solution Contract last modification (in TFM) in milliseconds since epoch.
 title: SolutionContract
 description: 'Solution Contract represents a relation with a single Retailer for reporting purposes. Terminal behavior can not be managed at this level.'
