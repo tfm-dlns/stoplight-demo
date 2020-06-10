@@ -1,8 +1,10 @@
 required:
   - id
   - name
+  - updateDate
   - state
   - solutionContractId
+  - createDate
   - acceptanceServiceIds
 properties:
   id:
@@ -36,13 +38,19 @@ properties:
     type: string
   lastUpdateReason:
     type: string
+    readOnly: true
+    description: >
+      Text description of the last update. 
+      User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.
   dbVersion:
     type: integer
     format: int64
+    readOnly: true
+    description: This object version number. Can be used to implement optimitic locking, together with "dbVersion" query parameter on POST/PUT.
   createDate:
     type: integer
     readOnly: true
-    Date and time of this Fleet creation (in TFM) in milliseconds since epoch. 
+    description: Date and time of this Fleet creation (in TFM) in milliseconds since epoch. 
   acceptanceServiceIds:
     type: array
     description: 'List of Acceptance Services that can be used by POIs in the Fleet'
