@@ -116,7 +116,17 @@ paths:
       tags:
         - fleet
       description: Create a fleet resource
-    parameters: []
+    parameters:
+      - in: query
+        name: dryRun
+        schema:
+          type: boolean
+        description: If set to true request will be simulated but not executed. Can be used to check if the request is valid.
+      - in: query
+        name: reason
+        schema:
+          type: string
+        description: A message that will be shown in the lastUpdateReason of this object after this operation succeeds.
   '/fleets/{id}':
     get:
       tags:
