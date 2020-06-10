@@ -46,7 +46,7 @@ properties:
     type: integer
     format: int64
     readOnly: true
-    description: This object version number. Can be used to implement optimitic locking, together with "dbVersion" query parameter on POST/PUT.
+    description: This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.
   createDate:
     type: integer
     readOnly: true
