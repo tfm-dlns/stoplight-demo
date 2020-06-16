@@ -7,27 +7,27 @@ properties:
   createDate:
     type: integer
     readOnly: true
-    description: Date and time of this Store Group last modification (in TFM) in milliseconds since epoch. 
+    description: Date and time of this Store Group last modification (in TFM) in milliseconds since epoch.
   dbVersion:
     type: integer
     format: int64
   fleetId:
     type: string
-    description: 'UUID of the parent Fleet'
+    description: UUID of the parent Fleet
   id:
     type: string
     readOnly: true
-    description: 'UUID of the object'
+    description: UUID of the object
   lastUpdateReason:
     type: string
   modelVersion:
     type: string
   name:
     type: string
-    description: 'Human-readable name of the store group'
-  notes: 
+    description: Human-readable name of the store group
+  notes:
     type: string
-    description: 'Free-form notes that can be used to comunicate the purpose of the Store Group or the POIs in it'
+    description: Free-form notes that can be used to comunicate the purpose of the Store Group or the POIs in it
   originalId:
     type: string
   realmId:
@@ -35,6 +35,6 @@ properties:
   updateDate:
     type: integer
     readOnly: true
-    description: Date and time of this Store Group last modification (in TFM) in milliseconds since epoch. 
+    description: Date and time of this Store Group last modification (in TFM) in milliseconds since epoch.
 title: StoreGroup
-description: 'Store Group is an organization unit directly below the fleet and can be used to group the Stores and POIs in the Fleet based on their geographical location or according to a common traits and/or expected behavior'
+description: Store Group is an organization unit directly below the fleet and can be used to group the Stores and POIs in the Fleet based on their geographical location or according to a common traits and/or expected behavior.

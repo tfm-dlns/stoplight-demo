@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Terminal Fleet Manager
   version: '1.0'
-  description: Mange your fleet of POIs
+  description: Management System of fleets of POIs
   contact:
     name: Dalenys
     url: 'https://dalenys.com'
@@ -92,16 +92,13 @@ paths:
           application/json:
             schema:
               $ref: ../models/fleet.v1.yaml
-        description: > 
-          Create a new Fleet. 
-          Provided solutionContractId must reference an existing object.
-          Name of the Fleet must be unique within the parent Solution Contract. 
+        description: "Create a new Fleet.  Provided solutionContractId must reference an existing object. Name of the Fleet must be unique within the parent Solution Contract. \n"
         required: true
       responses:
         '201':
-          description: Success, Fleet created.
+          description: 'Success, Fleet created.'
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created Fleet.
         '401':
@@ -316,7 +313,7 @@ paths:
         '201':
           description: Success
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created Solution Contract.
         '401':
@@ -448,7 +445,7 @@ paths:
         '201':
           description: Success
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created Store Group.
         '401':
@@ -755,7 +752,7 @@ paths:
         '201':
           description: Success
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created Store.
         '401':
@@ -806,7 +803,7 @@ paths:
         '201':
           description: Created
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created POI.
         '400':
@@ -950,13 +947,13 @@ paths:
           in: query
           name: target
     post:
-      summary: 'Create a new POI Profile.'
+      summary: Create a new POI Profile.
       operationId: post-poiProfiles
       responses:
         '201':
           description: Created
           headers:
-            Location: 
+            Location:
               schema: string
               description: URL of the created POI Profile.
         '400':
@@ -1031,6 +1028,7 @@ paths:
         - poiProfile
 components:
   schemas: {}
+  securitySchemes: {}
 tags:
   - name: fleet
     description: Everything about your fleet of POIs
