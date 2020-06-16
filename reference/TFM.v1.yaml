@@ -38,12 +38,6 @@ paths:
           description: Failure
       description: Get fleets defined in the system.
       parameters:
-        - name: offset
-          in: query
-          required: false
-          schema:
-            type: integer
-            format: int64
         - name: pageNumber
           in: query
           required: false
@@ -99,7 +93,8 @@ paths:
           description: 'Success, Fleet created.'
           headers:
             Location:
-              schema: string
+              schema: 
+                type: string
               description: URL of the created Fleet.
         '401':
           description: Unauthorized
@@ -314,7 +309,8 @@ paths:
           description: Success
           headers:
             Location:
-              schema: string
+              schema: 
+                type: string
               description: URL of the created Solution Contract.
         '401':
           description: Unauthorized
@@ -446,7 +442,8 @@ paths:
           description: Success
           headers:
             Location:
-              schema: string
+              schema:
+                type: string
               description: URL of the created Store Group.
         '401':
           description: Unauthorized
@@ -753,7 +750,8 @@ paths:
           description: Success
           headers:
             Location:
-              schema: string
+              schema: 
+                type: string
               description: URL of the created Store.
         '401':
           description: Unauthorized
@@ -793,9 +791,7 @@ paths:
             type: string
           in: query
           name: target
-        - schema:
-            type: string
-          in: header
+ 
     post:
       summary: ''
       operationId: postpoiRepresentation
@@ -804,7 +800,8 @@ paths:
           description: Created
           headers:
             Location:
-              schema: string
+              schema:
+                type: string
               description: URL of the created POI.
         '400':
           description: Bad Request
@@ -954,7 +951,8 @@ paths:
           description: Created
           headers:
             Location:
-              schema: string
+              schema:
+                type: string
               description: URL of the created POI Profile.
         '400':
           description: Bad Request
@@ -1029,6 +1027,34 @@ paths:
 components:
   schemas: {}
   securitySchemes: {}
+  parameters:
+    target:
+      in: query
+      name: target
+      schema:
+        type: string
+    size:
+      in: query
+      name: size
+      schema: 
+        type: integer
+      description: Number of records per page. Default 50.
+    page:
+      in: query
+      name: page
+      schema:
+        type: integer
+        format: int32
+      description: Determines the number of the page to retrieve. Default 0.
+    sort:
+      in: query
+      name: sort
+      schema:
+        type: string
+      description: > 
+        Name of the property by which the results will be sorted, 
+        plus 'asc' or 'desc' to indicate the direction of sorting.
+
 tags:
   - name: fleet
     description: Everything about your fleet of POIs
