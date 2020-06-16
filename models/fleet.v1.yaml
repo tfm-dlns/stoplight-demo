@@ -1,26 +1,21 @@
-required:
-  - id
-  - name
-  - updateDate
-  - state
-  - solutionContractId
-  - createDate
-  - acceptanceServiceIds
+type: object
+title: Fleet
+description: 'Top level of Retailer organisation, that contains all POIs deployed in a single business initiative. Besides organizing POIs for management and reporting, it can be used to set the configuration used by all the POIs inside.'
 properties:
   id:
     type: string
     readOnly: true
-    description: 'UUID of this fleet.'
+    description: UUID of this fleet.
   name:
+    description: "Human-friendly name of the fleet. Unique in the parent Solution Contract's scope"
     type: string
-    description: 'Human-friendly name of the fleet. Unique in the parent Solution Contract''s scope' 
   note:
     type: string
     description: 'Free-form note that can be used by the TFM users to pass information from one to the other, for example about the destined use of the Fleet, or actions that must/must not be taken'
   updateDate:
     type: integer
     readOnly: true
-    description: Date and time of this Fleet last modification (in TFM) in milliseconds since epoch. 
+    description: Date and time of this Fleet last modification (in TFM) in milliseconds since epoch.
   state:
     type: string
     enum:
@@ -29,7 +24,7 @@ properties:
     description: 'DRAFT - configuration of POIs in this fleet cannot be deployed to the terminals, ACTIVE - no restrictions on propagating the configuration'
   solutionContractId:
     type: string
-    description: 'UUID of the parent Solution Contract. Solution Contract represents a single Retailer in the system'
+    description: UUID of the parent Solution Contract. Solution Contract represents a single Retailer in the system
   realmId:
     type: string
   originalId:
@@ -39,23 +34,27 @@ properties:
   lastUpdateReason:
     type: string
     readOnly: true
-    description: >
-      Text description of the last update. 
-      User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.
+    description: |
+      Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.
   dbVersion:
     type: integer
     format: int64
     readOnly: true
-    description: This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.
+    description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
   createDate:
     type: integer
     readOnly: true
-    description: Date and time of this Fleet creation (in TFM) in milliseconds since epoch. 
+    description: Date and time of this Fleet creation (in TFM) in milliseconds since epoch.
   acceptanceServiceIds:
     type: array
-    description: 'List of Acceptance Services that can be used by POIs in the Fleet'
+    description: List of Acceptance Services that can be used by POIs in the Fleet
     items:
       type: string
-type: object
-title: Fleet
-description: 'Top level of Retailer organisation, that contains all POIs deployed in a single business initiative. Besides organizing POIs for management and reporting, it can be used to set the configuration used by all the POIs inside.'
+required:
+  - id
+  - name
+  - updateDate
+  - state
+  - solutionContractId
+  - createDate
+  - acceptanceServiceIds
