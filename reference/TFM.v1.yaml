@@ -1028,11 +1028,29 @@ components:
   schemas: {}
   securitySchemes: {}
   parameters:
+    dryRun:
+      in: query
+      name: dryRun
+      schema:
+        type: boolean
+      description: >
+        Simulate the operation, checking the related constraints, but do not make any changes in the system.
+        Can be used to validate the correctness of request.
+    reason:
+      in: query
+      name: reason
+      schema:
+        type: string
+      description: >
+        Description of the action. Will be later visible in the lastUpdateReason property of the resource.
     target:
       in: query
       name: target
       schema:
         type: string
+      description: >
+        Comma-separated list of properties names. 
+        If present, only properties on this list, plus id, are returned instead of the whole resource representation.
     size:
       in: query
       name: size
@@ -1054,7 +1072,22 @@ components:
       description: > 
         Name of the property by which the results will be sorted, 
         plus 'asc' or 'desc' to indicate the direction of sorting.
-
+    dbVersion:
+      in: query
+      name: dbVersion
+      schema:
+        type: integer
+      description: > 
+        The dbVersion property of the resource we want to modify. Used to implement an optimistic locking.
+        If the current dbVersion of the resource is different than one in request - for example,
+        because other user updated it in the meantime - the operation fails with HTTP status 412 Precondition Failed.
+    force:
+      in: query
+      name: force
+      schema:
+        type: boolean
+      description: >
+        If set to true, skip the impact checks that would otherwise cause the request to fail.
 tags:
   - name: fleet
     description: Everything about your fleet of POIs
