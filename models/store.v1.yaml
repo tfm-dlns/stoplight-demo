@@ -1,31 +1,44 @@
 title: Store
-description: 'Store groups POIs in a single location. Can be used for both reporting and POI configuration management.'
+description: Store groups POIs in a single location. Can be used for both reporting and POI configuration management.
 type: object
 properties:
   id:
     type: string
-    description: 'UUID of the object'
-  name: 
+    description: UUID of the object
+  createDate:
+    type: string
+    description: Date and time of creation (in TFM) in milliseconds since epoch.
+  updateDate:
+    type: string
+    description: Date and time of last modification (in TFM) in milliseconds since epoch.
+  dbVersion:
+    type: integer
+    format: int64
+    description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
+  lastUpdateReason:
+    type: string
+    description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
+  realmId:
+    type: string
+    description: 'Realm to which the object belong. Managed automatically, unless otherwise specified.'
+  name:
     type: string
     description: 'Human readable name, for UI and reports'
   notes:
     type: string
-    description: 'Free-form note that can be used to describe the Store purpose or pass remarks between users working on the same object.'
+    description: Free-form note that can be used to describe the Store purpose or pass remarks between users working on the same object.
   fleetId:
     type: string
-    description: >
-      UUID of the Fleet to which the Store belongs.
-      Each Store must belong to exactly one Fleet.
+    description: |
+      UUID of the Fleet to which the Store belongs. Each Store must belong to exactly one Fleet.
   storeGroupId:
     type: string
-    description: >
-      UUID of the Store Group to which the Store belongs. 
-      Each Store must belong to exactly one Store group. 
-      Referenced Store Group must belong to the Fleet referenced by fleetId property.
+    description: |
+      UUID of the Store Group to which the Store belongs.  Each Store must belong to exactly one Store group.  Referenced Store Group must belong to the Fleet referenced by fleetId property.
   acceptanceServiceContracts:
     type: array
     description: Parameter values for the Acceptance Services used by the POIs in this Store.
-    items: 
+    items:
       type: object
       description: Grouping of parameter sets for a signle Acceptance Service.
       properties:
@@ -34,12 +47,11 @@ properties:
           description: A reference to the Acceptance Service for which the parameters are being provided.
         parameters:
           type: array
-          description: >
-            Sets of parameter values for the Acceptance Service identified by acceptanceServiceId.
-            If there is more than one, then each of them must contain a selector property.
-          items: 
+          description: |
+            Sets of parameter values for the Acceptance Service identified by acceptanceServiceId. If there is more than one, then each of them must contain a selector property.
+          items:
             type: object
-            description: A single set of parameter values for the Acceptance Service. 
+            description: A single set of parameter values for the Acceptance Service.
             properties:
               id:
                 type: string

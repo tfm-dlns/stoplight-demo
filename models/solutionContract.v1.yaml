@@ -1,7 +1,6 @@
 type: object
-required:
-  - id
-  - name
+title: SolutionContract
+description: Solution Contract represents a relation with a single Retailer for reporting purposes. Terminal behavior can not be managed at this level.
 properties:
   createDate:
     type: integer
@@ -10,27 +9,27 @@ properties:
   dbVersion:
     type: integer
     format: int64
+    description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
   id:
     type: string
     readOnly: true
-    description: 'UUID of the object'
+    description: UUID of the object
   lastUpdateReason:
     type: string
-  modelVersion:
-    type: string
+    description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
   name:
     type: string
     description: 'Name of the Retailer, unique within the System, cannot be empty'
   note:
     type: string
-    description: 'Free-form note that can be used to communicate additional information about the purpose of the created object'
-  originalId:
-    type: string
+    description: Free-form note that can be used to communicate additional information about the purpose of the created object
   realmId:
     type: string
+    description: 'Realm to which the object belong. Managed automatically, unless otherwise specified.'
   updateDate:
     type: integer
     readOnly: true
     description: Date and time of this Solution Contract last modification (in TFM) in milliseconds since epoch.
-title: SolutionContract
-description: 'Solution Contract represents a relation with a single Retailer for reporting purposes. Terminal behavior can not be managed at this level.'
+required:
+  - id
+  - name

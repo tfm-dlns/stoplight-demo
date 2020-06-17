@@ -27,10 +27,7 @@ properties:
     description: UUID of the parent Solution Contract. Solution Contract represents a single Retailer in the system
   realmId:
     type: string
-  originalId:
-    type: string
-  modelVersion:
-    type: string
+    description: 'Realm to which the object belong. Managed automatically, unless otherwise specified.'
   lastUpdateReason:
     type: string
     readOnly: true

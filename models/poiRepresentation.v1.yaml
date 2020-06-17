@@ -1,6 +1,60 @@
 title: POI
 type: object
 description: Representation of a single POI and the configuration elements that are unique to it.
+properties:
+  id:
+    type: string
+    readOnly: true
+    description: |
+      Fifteen digit unique identifier of the POI within the system. Visible on the terminal and in the transactional and management messages of the terminal.
+  createDate:
+    type: integer
+    readOnly: true
+    description: Date and time of this POI creation (in TFM) in milliseconds since epoch.
+  updateDate:
+    type: integer
+    readOnly: true
+    description: Date and time of this POI last modification (in TFM) in milliseconds since epoch.
+  dbVersion:
+    type: integer
+    format: int64
+    description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
+  lastUpdateReason:
+    type: string
+    description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
+  realmId:
+    type: string
+    description: 'Realm to which the object belong. Managed automatically, unless otherwise specified.'
+  terminalId:
+    type: string
+    readOnly: true
+    description: |
+      Terminal Id that is passed to the card and the acquirer during transactions. Assigned by the system.
+  fleetId:
+    type: string
+    description: Reference to a Store Group that is an ancestor of this POI.
+  storeGroupId:
+    type: string
+    description: Reference to a Store Group that is an ancestor of this POI. That Store Grup must be in the fleet referenced by fleetId property.
+  storeId:
+    type: string
+    description: Reference to the parent Store of this POI. That Store must be in a Store Group referenced by storeGroupId property.
+  platformId:
+    type: string
+    description: |
+      Reference to one of the terminal platforms available in the system.  Platforms endpoint provides a list of all available values.
+  enabled:
+    type: boolean
+    description: |
+      If enabled, this POI configuration is available for the terminal to download. Otherwise terminals asking for this POI's configuration will not receive updates of configuration.
+  configurationStatus:
+    type: string
+    readOnly: true
+    description: |
+      Information if the most recent version of the configuration is available for terminals. If available_to_poi then the current configuration is available for download by a terminal. If locally_modified, then there are some changes made on the TFM that were not deployed yet.
+    enum:
+      - locally_modified
+      - available_to_poi
 required:
   - id
   - terminalId
@@ -9,61 +63,3 @@ required:
   - storeId
   - platformId
   - enabled
-  - configurationState
-properties: 
-  id:
-    type: string
-    readOnly: true
-    description: >
-      Fifteen digit unique identifier of the POI within the system.
-      Visible on the terminal and in the transactional and management messages of the terminal.
-  createDate:
-    type: integer
-    readOnly: true
-    description: Date and time of this POI creation (in TFM) in milliseconds since epoch. 
-  updateDate:
-    type: integer
-    readOnly: true
-    description: Date and time of this POI last modification (in TFM) in milliseconds since epoch. 
-  dbVersion:
-    type: integer
-    format: int64
-  lastUpdateReason:
-    type: string
-  realmId:
-    type: string
-  terminalId:
-    type: string
-    readOnly: true
-    description: >
-      Terminal Id that is passed to the card and the acquirer during transactions.
-      Assigned by the system.
-  fleetId:
-    type: string
-    description: Reference to a Store Group that is an ancestor of this POI. 
-  storeGroupId:
-    type: string
-    description: Reference to a Store Group that is an ancestor of this POI. That Store Grup must be in the fleet referenced by fleetId property.
-  storeId:
-    type: string
-    description: Reference to the parent Store of this POI. That Store must be in a Store Group referenced by storeGroupId property.
-  platformId: 
-    type: string
-    description: >
-      Reference to one of the terminal platforms available in the system. 
-      Platforms endpoint provides a list of all available values.
-  enabled:
-    type: boolean
-    description: >
-      If enabled, this POI configuration is available for the terminal to download.
-      Otherwise terminals asking for this POI's configuration will not receive updates of configuration.
-  configurationStatus:
-    type: string
-    readOnly: true
-    description: >
-      Information if the most recent version of the configuration is available for terminals.
-      If available_to_poi then the current configuration is available for download by a terminal.
-      If locally_modified, then there are some changes made on the TFM that were not deployed yet.
-    enum: 
-      - locally_modified
-      - available_to_poi

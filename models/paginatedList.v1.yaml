@@ -4,11 +4,21 @@ description: Paginated List
 properties:
   size:
     type: integer
+    description: Number of records returned.
+    readOnly: true
   number:
     type: integer
+    description: Page number.
+    readOnly: true
   totalItems:
     type: number
+    description: Total number of records.
+    readOnly: true
   totalPages:
     type: integer
+    description: Total number of pages with records.
+    readOnly: true
   last:
     type: boolean
+    description: 'If true, then this is the last page of results.'
+    readOnly: true
