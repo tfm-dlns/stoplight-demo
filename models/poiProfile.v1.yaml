@@ -4,19 +4,24 @@ description: "POI Profile is a collection of configuration data that can be shar
 properties:
   id:
     type: string
+    readOnly: true
     description: UUID of the POI Profile.
   createDate:
     type: string
+    readOnly: true
     description: Date and time of creation (in TFM) in milliseconds since epoch.
   updateDate:
     type: string
+    readOnly: true
     description: Date and time of last modification (in TFM) in milliseconds since epoch.
   dbVersion:
     type: integer
     format: int64
+    readOnly: true
     description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
   lastUpdateReason:
     type: string
+    readOnly: true
     description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
   realmId:
     type: string
@@ -57,3 +62,12 @@ properties:
     type: string
     description: |
       Free-form note that can be used to communicate the purpose of the POI Profile, how should it be used, etc.
+required:
+  - id
+  - createDate
+  - updateDate
+  - name
+  - fleetId
+  - acceptanceServiceIds
+  - applicationIds
+  - tmsProfileId
