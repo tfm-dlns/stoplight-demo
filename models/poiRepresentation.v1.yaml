@@ -21,6 +21,7 @@ properties:
     description: 'This object version number. Can be used to implement optimistic locking, together with "dbVersion" query parameter on PUT.'
   lastUpdateReason:
     type: string
+    readOnly: true
     description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
   realmId:
     type: string
@@ -57,9 +58,13 @@ properties:
       - available_to_poi
 required:
   - id
+  - createDate
+  - updateDate
+  - lastUpdateReason
   - terminalId
   - fleetId
   - storeGroupId
   - storeId
   - platformId
   - enabled
+  - configurationStatus
