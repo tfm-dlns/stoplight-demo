@@ -16,6 +16,7 @@ properties:
     description: UUID of the object
   lastUpdateReason:
     type: string
+    readOnly: true
     description: 'Text description of the last update.  User can set this value using "reason" query parameter on POST/PUT. Otherwise the value is provided by the system.'
   name:
     type: string
@@ -31,5 +32,9 @@ properties:
     readOnly: true
     description: Date and time of this Solution Contract last modification (in TFM) in milliseconds since epoch.
 required:
+  - createDate
+  - dbVersion
   - id
+  - lastUpdateReason
   - name
+  - updateDate
