@@ -1,0 +1,17 @@
+title: smoneyInfo
+type: object
+properties:
+  legalRepresentative:
+    type: string
+  address:
+    type: string
+  company:
+    type: string
+  alias:
+    type: string
+  subAccounts:
+    type: string
+  KYC:
+    type: string
+  IBAN:
+    type: string

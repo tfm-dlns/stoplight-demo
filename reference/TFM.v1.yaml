@@ -1,14 +1,15 @@
 openapi: 3.0.0
 info:
-  title: Terminal Fleet Manager
+  title: Dalenys payment services
   version: '1.0'
-  description: Management System of fleets of POIs
+  description: Dalenys payment services
   contact:
     name: Dalenys
     url: 'https://dalenys.com'
     email: contact@dalenys.com
 servers:
   - url: 'https://staging-payment.dlns.io'
+    description: Staging
 paths:
   /fleets:
     get:
@@ -52,7 +53,8 @@ paths:
           application/json:
             schema:
               $ref: ../models/fleet.v1.yaml
-        description: "Create a new Fleet.  Provided solutionContractId must reference an existing object. Name of the Fleet must be unique within the parent Solution Contract. \n"
+        description: |
+          Create a new Fleet.  Provided solutionContractId must reference an existing object. Name of the Fleet must be unique within the parent Solution Contract. 
         required: true
       responses:
         '201':
@@ -1011,7 +1013,7 @@ components:
       name: sort
       schema:
         type: string
-      description: "Name of the property by which the results will be sorted,  plus 'asc' or 'desc' to indicate the direction of sorting."
+      description: 'Name of the property by which the results will be sorted,  plus ''asc'' or ''desc'' to indicate the direction of sorting.'
     dbVersion:
       in: query
       name: dbVersion

@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: marketplaces
+  version: '1.0'
+  description: Marketplace API for marketplaces project
+servers:
+  - url: 'https://staging-payment.dlns.io'
+    description: Staging
+paths:
+  /marketplaces:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-marketplaces
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: ../models/marketplace.v1.yaml
+components:
+  schemas:
+    marketplace:
+      title: marketplace
+      type: object
+      properties:
+        id:
+          type: string
+        currency:
+          type: string
+        website:
+          type: string
+        vatNumber:
+          type: string
+        status:
+          type: string
+        marketplaceParams:
+          type: object
+          properties:
+            payoutRules:
+              type: string
+            payment:
+              type: string
