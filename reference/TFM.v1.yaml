@@ -971,6 +971,296 @@ paths:
       description: Delete a Poi Profile
       tags:
         - poiProfile
+  /poiGroups:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - poiGroups
+      responses: {}
+      operationId: get-poiGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: ../models/poiGroup.v1.yaml
+                - $ref: ../models/paginatedList.v1.yaml
+    post:
+      summary: ''
+      operationId: post-poiGroups
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/poiGroup.v1.yaml
+        description: ''
+      parameters:
+        - schema:
+            type: string
+          in: header
+      tags:
+        - poiGroups
+  '/poiGroups/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - poiGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiGroup.v1.yaml
+      operationId: get-poiGroups-id
+    put:
+      summary: ''
+      operationId: put-poiGroups-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/poiGroup.v1.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/poiGroup.v1.yaml
+      tags:
+        - poiGroups
+    delete:
+      summary: ''
+      operationId: delete-poiGroups-id
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      tags:
+        - poiGroups
+  /activePoiProfiles:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - activePoiProfiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/activePoiProfile.v1.yaml
+                  - $ref: ../models/paginatedList.v1.yaml
+      operationId: get-activePoiProfiles
+    post:
+      summary: ''
+      operationId: post-activePoiProfiles
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/activePoiProfile.v1.yaml
+      tags:
+        - activePoiProfiles
+  '/activePoiProfiles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - activePoiProfiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/activePoiProfile.v1.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: get-activePoiProfiles-id
+    put:
+      summary: ''
+      operationId: put-activePoiProfiles-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/activePoiProfile.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/activePoiProfile.v1.yaml
+        description: ''
+      tags:
+        - activePoiProfiles
+    delete:
+      summary: ''
+      operationId: delete-activePoiProfiles-id
+      responses:
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      tags:
+        - activePoiProfiles
+      description: ''
+  /activePoiProperties:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - activePoiProperties
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: ../models/activePoiProperty.v1.yaml
+                  - $ref: ../models/paginatedList.v1.yaml
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: get-activePoiProperties
+    post:
+      summary: ''
+      operationId: post-activePoiProperties
+      responses:
+        '201':
+          description: Created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/activePoiProperty.v1.yaml
+      tags:
+        - activePoiProperties
+  '/activePoiProperties/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - activePoiProperties
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: ../models/activePoiProperty.v1.yaml
+      operationId: get-activePoiProperties-id
+    put:
+      summary: ''
+      operationId: put-activePoiProperties-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/activePoiProperty.v1.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      tags:
+        - activePoiProperties
+    delete:
+      summary: ''
+      operationId: delete-activePoiProperties-id
+      responses:
+        '204':
+          description: No Content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      tags:
+        - activePoiProperties        
 components:
   schemas: {}
   securitySchemes: {}
