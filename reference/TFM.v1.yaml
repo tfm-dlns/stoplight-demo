@@ -1008,7 +1008,7 @@ paths:
             type: string
           in: header
       tags:
-        - poi-groups
+        - poi-group
   '/poiGroups/{id}':
     parameters:
       - schema:
@@ -1055,7 +1055,7 @@ paths:
             schema:
               $ref: ../models/poiGroup.v1.yaml
       tags:
-        - poi-groups
+        - poi-group
     delete:
       summary: ''
       operationId: delete-poiGroups-id
@@ -1069,7 +1069,7 @@ paths:
         '403':
           description: Forbidden
       tags:
-        - poi-groups
+        - poi-group
   /activePoiProfiles:
     get:
       summary: Get Active Poi Profiles
@@ -1103,7 +1103,7 @@ paths:
             schema:
               $ref: ../models/activePoiProfile.v1.yaml
       tags:
-        - active-poi-profiles
+        - active-poi-profile
   '/activePoiProfiles/{id}':
     parameters:
       - schema:
@@ -1148,7 +1148,7 @@ paths:
               $ref: ../models/activePoiProfile.v1.yaml
         description: ''
       tags:
-        - active-poi-profiles
+        - active-poi-profile
     delete:
       summary: ''
       operationId: delete-activePoiProfiles-id
@@ -1161,9 +1161,9 @@ paths:
           description: Forbidden
         '404':
           description: Not Found
-      tags:
-        - active-poi-profiles
       description: ''
+      tags:
+        - active-poi-profile
   /activePoiProperties:
     get:
       summary: Get Active Poi Properties
@@ -1195,7 +1195,7 @@ paths:
             schema:
               $ref: ../models/activePoiProperty.v1.yaml
       tags:
-        - active-poi-properties
+        - active-poi-property
   '/activePoiProperties/{id}':
     parameters:
       - schema:
@@ -1242,7 +1242,7 @@ paths:
         '404':
           description: Not Found
       tags:
-        - active-poi-properties
+        - active-poi-property
     delete:
       summary: ''
       operationId: delete-activePoiProperties-id
@@ -1261,7 +1261,7 @@ paths:
         '403':
           description: Forbidden
       tags:
-        - active-poi-properties
+        - active-poi-property
 components:
   schemas: {}
   securitySchemes: {}
