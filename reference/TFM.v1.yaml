@@ -974,8 +974,6 @@ paths:
   /poiGroups:
     get:
       summary: Get Poi Groups
-      tags:
-        - poi-groups
       responses: {}
       operationId: get-poiGroups
       requestBody:
@@ -985,6 +983,8 @@ paths:
               allOf:
                 - $ref: ../models/poiGroup.v1.yaml
                 - $ref: ../models/paginatedList.v1.yaml
+      tags:
+        - poi-group
     post:
       summary: ''
       operationId: post-poiGroups
@@ -1018,8 +1018,6 @@ paths:
         required: true
     get:
       summary: Get a Poi Group
-      tags:
-        - poi-groups
       responses:
         '200':
           description: OK
@@ -1029,6 +1027,8 @@ paths:
                 $ref: ../models/poiGroup.v1.yaml
       operationId: get-poiGroups-id
       description: ''
+      tags:
+        - poi-group
     put:
       summary: ''
       operationId: put-poiGroups-id
@@ -1074,7 +1074,7 @@ paths:
     get:
       summary: Get Active Poi Profiles
       tags:
-        - active-poi-profiles
+        - active-poi-profile
       responses:
         '200':
           description: OK
@@ -1114,7 +1114,7 @@ paths:
     get:
       summary: Get an Active Poi Profile
       tags:
-        - active-poi-profiles
+        - active-poi-profile
       responses:
         '200':
           description: OK
@@ -1168,7 +1168,7 @@ paths:
     get:
       summary: Get Active Poi Properties
       tags:
-        - active-poi-properties
+        - active-poi-property
       responses:
         '200':
           description: OK
@@ -1205,8 +1205,6 @@ paths:
         required: true
     get:
       summary: Get an Active Poi Property
-      tags:
-        - active-poi-properties
       responses:
         '200':
           description: OK
@@ -1223,6 +1221,8 @@ paths:
               schema:
                 $ref: ../models/activePoiProperty.v1.yaml
       operationId: get-activePoiProperties-id
+      tags:
+        - active-poi-property
     put:
       summary: ''
       operationId: put-activePoiProperties-id
