@@ -1,0 +1,17 @@
+title: activePoiProfile
+type: object
+properties:
+  id:
+    type: string
+  elementId:
+    type: string
+  poiProfileId:
+    type: string
+  elementType:
+    anyOf:
+      - enum:
+          - fleet
+          - store-group
+          - store
+          - poi
+    type: string

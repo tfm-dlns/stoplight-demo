@@ -1,0 +1,33 @@
+title: poiGroup+.v1.
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  type:
+    oneOf:
+      - enum:
+          - rules_based
+          - inclusion_based
+    type: string
+  poiId:
+    type: array
+    items:
+      type: string
+  rules:
+    type: array
+    items:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+        criteria:
+          anyOf:
+            - enum:
+                - fleet
+                - platform
+                - application
+          type: string
