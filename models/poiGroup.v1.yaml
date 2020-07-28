@@ -1,4 +1,4 @@
-title: poiGroup+.v1.
+title: Poi Group
 type: object
 properties:
   id:
@@ -31,3 +31,4 @@ properties:
                 - platform
                 - application
           type: string
+description: ''

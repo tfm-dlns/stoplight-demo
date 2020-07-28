@@ -1,4 +1,4 @@
-title: activePoiProperty
+title: Active Poi Property
 type: object
 properties:
   id:

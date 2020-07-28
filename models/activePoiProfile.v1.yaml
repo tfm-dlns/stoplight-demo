@@ -1,4 +1,4 @@
-title: activePoiProfile
+title: Active Poi Profile
 type: object
 properties:
   id:

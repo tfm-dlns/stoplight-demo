@@ -851,7 +851,7 @@ paths:
     get:
       summary: Get Poi Profiles
       tags:
-        - poiProfile
+        - poi-profile
       responses:
         '200':
           description: OK
@@ -914,7 +914,7 @@ paths:
             schema:
               $ref: ../models/poiProfile.v1.yaml
       tags:
-        - poiProfile
+        - poi-profile
       description: Create a new POI Profile in the System.
   '/poiProfiles/{id}':
     parameters:
@@ -926,7 +926,7 @@ paths:
     get:
       summary: Get a Poi Profile
       tags:
-        - poiProfile
+        - poi-profile
       responses:
         '200':
           description: OK
@@ -955,7 +955,7 @@ paths:
             schema:
               $ref: ../models/poiProfile.v1.yaml
       tags:
-        - poiProfile
+        - poi-profile
     delete:
       summary: ''
       operationId: deletPoiProfileId
@@ -970,12 +970,12 @@ paths:
           description: Not Found
       description: Delete a Poi Profile
       tags:
-        - poiProfile
+        - poi-profile
   /poiGroups:
     get:
       summary: Your GET endpoint
       tags:
-        - poiGroups
+        - poi-groups
       responses: {}
       operationId: get-poiGroups
       requestBody:
@@ -1008,7 +1008,7 @@ paths:
             type: string
           in: header
       tags:
-        - poiGroups
+        - poi-groups
   '/poiGroups/{id}':
     parameters:
       - schema:
@@ -1019,7 +1019,7 @@ paths:
     get:
       summary: Your GET endpoint
       tags:
-        - poiGroups
+        - poi-groups
       responses:
         '200':
           description: OK
@@ -1054,7 +1054,7 @@ paths:
             schema:
               $ref: ../models/poiGroup.v1.yaml
       tags:
-        - poiGroups
+        - poi-groups
     delete:
       summary: ''
       operationId: delete-poiGroups-id
@@ -1068,12 +1068,12 @@ paths:
         '403':
           description: Forbidden
       tags:
-        - poiGroups
+        - poi-groups
   /activePoiProfiles:
     get:
       summary: Your GET endpoint
       tags:
-        - activePoiProfiles
+        - active-poi-profiles
       responses:
         '200':
           description: OK
@@ -1102,7 +1102,7 @@ paths:
             schema:
               $ref: ../models/activePoiProfile.v1.yaml
       tags:
-        - activePoiProfiles
+        - active-poi-profiles
   '/activePoiProfiles/{id}':
     parameters:
       - schema:
@@ -1113,7 +1113,7 @@ paths:
     get:
       summary: Your GET endpoint
       tags:
-        - activePoiProfiles
+        - active-poi-profiles
       responses:
         '200':
           description: OK
@@ -1147,7 +1147,7 @@ paths:
               $ref: ../models/activePoiProfile.v1.yaml
         description: ''
       tags:
-        - activePoiProfiles
+        - active-poi-profiles
     delete:
       summary: ''
       operationId: delete-activePoiProfiles-id
@@ -1161,13 +1161,13 @@ paths:
         '404':
           description: Not Found
       tags:
-        - activePoiProfiles
+        - active-poi-profiles
       description: ''
   /activePoiProperties:
     get:
       summary: Your GET endpoint
       tags:
-        - activePoiProperties
+        - active-poi-properties
       responses:
         '200':
           description: OK
@@ -1194,7 +1194,7 @@ paths:
             schema:
               $ref: ../models/activePoiProperty.v1.yaml
       tags:
-        - activePoiProperties
+        - active-poi-properties
   '/activePoiProperties/{id}':
     parameters:
       - schema:
@@ -1205,7 +1205,7 @@ paths:
     get:
       summary: Your GET endpoint
       tags:
-        - activePoiProperties
+        - active-poi-properties
       responses:
         '200':
           description: OK
@@ -1241,7 +1241,7 @@ paths:
         '404':
           description: Not Found
       tags:
-        - activePoiProperties
+        - active-poi-properties
     delete:
       summary: ''
       operationId: delete-activePoiProperties-id
@@ -1260,7 +1260,7 @@ paths:
         '403':
           description: Forbidden
       tags:
-        - activePoiProperties        
+        - active-poi-properties        
 components:
   schemas: {}
   securitySchemes: {}
