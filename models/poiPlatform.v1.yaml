@@ -1,0 +1,10 @@
+title: Poi Platform
+type: object
+description: ''
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  '':
+    type: string

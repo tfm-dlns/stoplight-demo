@@ -1,0 +1,27 @@
+title: Poi Application
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  mandatory:
+    type: boolean
+  applicationProperties:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        defaultValue:
+          type: string
+        pattern:
+          type: string
+        allowedValues:
+          type: array
+          items:
+            type: string
+        label:
+          type: string
+description: ''
