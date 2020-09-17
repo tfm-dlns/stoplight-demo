@@ -11,5 +11,3 @@ Steps required to create a POI - basic scenario with the same configuration for 
   6. Set the POI Profile as an active POI Profile for your Fleet.
   7. Create a POI inside your Store.
   8. Note down the POI ID assigned to the new POI and use it during terminal initialiation. 
-  
-...
